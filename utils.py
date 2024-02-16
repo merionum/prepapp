@@ -1,38 +1,17 @@
-# import matplotlib.pyplot as plt
-# import numpy as np
 import base64
 
+hrule = "\n_________________"
 
-hrule = '\n_________________'
 
+def preprocess(data: dict, dummy="что-то_NOUN"):
 
-def preprocess(data: dict, dummy='что-то_NOUN'):
-
-    if data['host_lemma'] is None:
+    if data["host_lemma"] is None:
         host = dummy
     else:
-        host = data['host_lemma'] + '_' + data['host_pos']
-    prep = '_'.join(data['prep'].split()) + '_' + data['dependant_morph'].get('Case')[0]
-    dep = data['dependant_lemma'] + '_' + data['dependant_pos']
-    return ' '.join([host, prep, dep])
-
-
-# def show_hbar(names, values, title, kind='relative'):
-
-#     if kind == 'relative':
-#         values = (values/ sum(values)).round(2)
-
-#     fig, ax = plt.subplots()
-
-#     y_pos = np.arange(len(values))
-
-#     ax.barh(y_pos, values, align='center')
-#     ax.set_yticks(y_pos)
-#     ax.set_yticklabels(names)
-#     ax.invert_yaxis()
-#     ax.set_title(title)
-
-#     return fig
+        host = data["host_lemma"] + "_" + data["host_pos"]
+    prep = "_".join(data["prep"].split()) + "_" + data["dependant_morph"].get("Case")[0]
+    dep = data["dependant_lemma"] + "_" + data["dependant_pos"]
+    return " ".join([host, prep, dep])
 
 
 def get_table_download_button(df, filename, linktext):
